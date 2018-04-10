@@ -1,0 +1,30 @@
+{
+  "name": "crhg/laravel-config-validator",
+  "description": "Add config:validate command to laravel app which validate configuration.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Manabu Matsui",
+      "email": "manabu.matsui@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Crhg\\ConfigValidator\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.0",
+    "illuminate/support": "^5.5",
+    "illuminate/console": "^5.6",
+    "illuminate/container": "^5.6"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Crhg\\ConfigValidator\\Providers\\ConfigValidatorServiceProvider"
+      ]
+    }
+  }
+}
