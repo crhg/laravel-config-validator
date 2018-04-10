@@ -10,6 +10,7 @@ namespace Crhg\ConfigValidator\Commands;
 
 use Crhg\ConfigValidator\Interfaces\ConfigValidationRuleProvider;
 use Illuminate\Console\Command;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 
@@ -26,9 +27,10 @@ class ConfigValidateCommand extends Command
     {
         $config = Config::all();
 
+        /** @var Application $app */
         $app = $this->getLaravel();
         /** @var ConfigValidationRuleProvider[] $ruleProviders */
-        $ruleProviders = $app->resolved(ConfigValidationRuleProvider::class);
+        $ruleProviders = $app->getProviders(ConfigValidationRuleProvider::class);
 
         $found_error = false;
         foreach ($ruleProviders as $p) {
