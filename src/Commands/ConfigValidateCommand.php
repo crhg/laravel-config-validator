@@ -37,8 +37,8 @@ class ConfigValidateCommand extends Command
             $rule = $p->getConfigValidationRule();
             $validator = Validator::make($config, $rule);
 
-            foreach ($validator->errors() as $key => $messages) {
-                foreach ($messages as $message) {
+            foreach ($validator->errors()->keys() as $key) {
+                foreach ($validator->errors()->get($key) as $message) {
                     $this->line(sprintf("%s: %s", $key,$message));
                 }
                 $found_error=true;
